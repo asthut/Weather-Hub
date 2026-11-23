@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DTN Storm Impact Analytics</title>
+<style>
+@font-face{font-family:"Mark Pro";src:local("Mark Pro"),url("./fonts/FontFont - Mark Pro.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Mark Pro";src:local("Mark Pro Bold"),url("./fonts/FontFont - Mark Pro Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+:root{--navy:#09235a;--blue:#4480ff;--green:#58d92e;--amber:#ff9900;--rail:#444d56;--paper:#f6f8fa;--line:#d1d5da;--ink:#17191c;--muted:#444d56;--white:#fff}
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;background:var(--paper);font-family:"Mark Pro",Arial,Helvetica,sans-serif;color:var(--ink)}
+body{overflow-x:hidden}.app{min-height:100vh;display:grid;grid-template-columns:76px 1fr}.rail{background:var(--rail);padding-top:22px;display:flex;justify-content:center}.brand{width:38px;height:38px;border-radius:50%;background:conic-gradient(#119ed1 0 25%,#58c63d 25% 75%,#119ed1 75%);position:relative}.brand:after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--rail)}
+main{padding:20px 26px 58px;max-width:1480px;width:100%;margin:auto}.stage{outline:none}.panel{border-radius:10px}.hero{background:var(--navy);color:white;padding:16px 22px 20px;box-shadow:inset 0 0 0 1px rgba(84,197,208,.55)}
+.kicker{display:inline-block;background:var(--blue);font-weight:700;padding:8px 18px;border-radius:5px;font-size:13px}.hero h1{font-size:29px;line-height:1.05;font-weight:400;margin:17px 0 9px}.hero p{font-size:15.5px;line-height:1.30;margin:0;max-width:1450px}.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px}.benefit{display:flex;gap:13px;align-items:center;font-size:14.5px;line-height:1.18}.dot{width:18px;height:18px;border-radius:50%;background:#67c744;flex:0 0 auto}
+.reveal{opacity:0;transform:translateY(28px);max-height:0;overflow:hidden;transition:opacity .55s ease,transform .55s ease,max-height .8s ease,margin .55s ease}.reveal.visible{opacity:1;transform:none;max-height:800px;overflow:visible}.model.visible{margin-top:20px}.section-title{color:var(--blue);font-size:15px;font-weight:700;margin:0 0 18px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:980px;margin:auto}.card{background:#fff;border:2px solid var(--line);border-radius:22px;padding:16px 17px 16px;min-height:178px}.num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:white;font-size:14px}.card:nth-child(1) .num{background:var(--blue)}.card:nth-child(2) .num{background:var(--green)}.card:nth-child(3) .num{background:var(--amber)}.card:nth-child(4) .num{background:var(--navy)}.card h2{font-size:18px;font-weight:400;margin:13px 0 14px}.card p{color:var(--muted);font-size:13.5px;line-height:1.24;margin:0}
+.inputs.visible{margin-top:20px}.input-panel{background:#fff;border:2px solid #c8d5dd;border-radius:10px;padding:15px 18px 18px}.input-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:17px}.input-item{display:grid;grid-template-columns:26px 1fr;column-gap:14px}.input-item .dot{width:18px;height:18px;background:var(--green);margin-top:2px}.input-item h3{font-size:15px;font-weight:400;margin:0 0 9px}.input-item p{grid-column:2;color:var(--muted);font-size:13.5px;line-height:1.24;margin:0}
+.hint{position:fixed;right:18px;bottom:16px;background:rgba(9,35,90,.92);color:#fff;border-radius:999px;padding:9px 14px;font-size:12px;box-shadow:0 5px 20px rgba(0,0,0,.18);transition:opacity .3s}.hint.done{opacity:.55}.controls{position:fixed;left:106px;bottom:14px;display:flex;gap:8px}.controls button{border:0;border-radius:999px;background:#fff;color:var(--navy);box-shadow:0 3px 14px rgba(0,0,0,.14);padding:8px 13px;font-weight:700;cursor:pointer}.controls button:focus-visible,.stage:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+@media(max-width:900px){.app{grid-template-columns:58px 1fr}.rail{padding-top:20px}.brand{width:34px;height:34px}.brand:after{inset:10px}main{padding:20px 16px 70px}.hero h1{font-size:27px}.hero p{font-size:16px}.benefits,.cards,.input-grid{grid-template-columns:1fr 1fr}.controls{left:70px}}
+@media(max-width:580px){.app{display:block}.rail{display:none}.benefits,.cards,.input-grid{grid-template-columns:1fr}.hero{padding:18px}.hero h1{font-size:25px}.card{min-height:0}.controls{left:12px}.hint{display:none}}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail" aria-label="DTN brand rail"><div class="brand" aria-hidden="true"></div></aside>
+  <main>
+    <div id="stage" class="stage" tabindex="0" role="button" aria-label="Click to reveal the next section" aria-live="polite">
+      <section class="panel hero">
+        <div class="kicker">WHAT IT IS</div>
+        <h1>Forward-looking outage intelligence</h1>
+        <p>Storm Impact Analytics uses weather intelligence, machine learning, and utility-specific outage history to predict where and how severely upcoming weather will impact the electrical system, giving utilities actionable insight before outages occur.</p>
+        <div class="benefits">
+          <div class="benefit"><span class="dot"></span><span>Operating-territory<br>predictions</span></div>
+          <div class="benefit"><span class="dot"></span><span>Weather Hub and API<br>delivery</span></div>
+          <div class="benefit"><span class="dot"></span><span>Similar and archived events</span></div>
+          <div class="benefit"><span class="dot"></span><span>Meteorologist forecast<br>guidance</span></div>
+        </div>
+      </section>
+
+      <section id="model" class="reveal model" aria-hidden="true">
+        <h2 class="section-title">HOW THE MODEL IS GENERATED</h2>
+        <div class="cards">
+          <article class="card"><div class="num">1</div><h2>Build history</h2><p>Align prior jobs with weather reanalysis, assets, land use and vegetation.</p></article>
+          <article class="card"><div class="num">2</div><h2>Train &amp; test</h2><p>Machine learning identifies how the utility system responded to past hazards.</p></article>
+          <article class="card"><div class="num">3</div><h2>Forecast</h2><p>High-resolution weather models drive expected outage scale and geography.</p></article>
+          <article class="card"><div class="num">4</div><h2>Publish</h2><p>DTN meteorologists review events and communicate forecast confidence.</p></article>
+        </div>
+      </section>
+
+      <section id="inputs" class="reveal inputs" aria-hidden="true">
+        <div class="input-panel">
+          <div class="kicker">CUSTOMER INPUTS</div>
+          <div class="input-grid">
+            <article class="input-item"><span class="dot"></span><h3>OMS history</h3><p>3+ years optimal: Job ID, timing, customers affected, cause, device location, coordinates and time zone.</p></article>
+            <article class="input-item"><span class="dot"></span><h3>Operating geographies</h3><p>Service territory, HQ, WMC and system boundaries, plus required prediction levels.</p></article>
+            <article class="input-item"><span class="dot"></span><h3>Distribution GIS</h3><p>Overhead lines, poles, protective devices and transformers, including IDs and projection information.</p></article>
+            <article class="input-item"><span class="dot"></span><h3>Business rules</h3><p>Storm tiers, incident thresholds, event triggers, restoration targets and authorized users.</p></article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="controls" aria-label="Presentation controls"><button id="back" type="button">Back</button><button id="reset" type="button">Reset</button><button id="next" type="button">Next</button></div>
+<div id="hint" class="hint">Click anywhere or press → to continue</div>
+<script>
+(()=>{const stage=document.getElementById('stage'),model=document.getElementById('model'),inputs=document.getElementById('inputs'),hint=document.getElementById('hint');let step=0;
+function render(){model.classList.toggle('visible',step>=1);inputs.classList.toggle('visible',step>=2);model.setAttribute('aria-hidden',step<1);inputs.setAttribute('aria-hidden',step<2);hint.textContent=step<2?'Click anywhere or press → to continue':'Complete · use Reset to replay';hint.classList.toggle('done',step===2);}
+function next(){if(step<2){step++;render();}} function back(){if(step>0){step--;render();}} function reset(){step=0;render();window.scrollTo({top:0,behavior:'smooth'});} 
+stage.addEventListener('click',e=>{if(!e.target.closest('button'))next();});stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '||e.key==='ArrowRight'){e.preventDefault();next();}if(e.key==='ArrowLeft'){e.preventDefault();back();}});document.getElementById('next').addEventListener('click',next);document.getElementById('back').addEventListener('click',back);document.getElementById('reset').addEventListener('click',reset);render();})();
+</script>
+</body>
+</html>
